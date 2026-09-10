@@ -27,7 +27,11 @@ habitos-tracker/
 ## Documentación
 
 Ver [`docs/`](./docs) para:
-- Planeación del proceso de desarrollo (parámetros de configuración, plan de pruebas, casos de prueba, flujo CI/CD, estrategia de despliegue)
+- `parametros-configuracion.md` — parámetros de configuración de herramientas
+- `plan-de-pruebas.md` — plan de pruebas
+- `casos-de-prueba.md` — casos de prueba
+- `flujo-cicd.md` — flujo de control de versiones y CI/CD
+- `estrategia-despliegue.md` — estrategia de despliegue
 - `sdd-proposal.md` — propuesta de Spec-Driven Development (comparación Kiro vs Spec Kit)
 - `sdd-implementation.md` — guía de implementación de SDD
 

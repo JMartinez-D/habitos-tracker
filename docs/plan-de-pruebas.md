@@ -8,7 +8,13 @@
 | Integración | Sync Room ↔ API, persistencia offline, endpoints de la API contra MySQL | JUnit + MockWebServer (app), PHPUnit Feature Tests (api) |
 | E2E | Flujos completos de usuario (registro, crear hábito, marcar completado, ver racha) | Appium |
 
-**Nota sobre la herramienta e2e:** se usa Appium en lugar de Selenium/Katalon directo porque el caso de estudio es una app móvil nativa (no web). Appium implementa el mismo protocolo WebDriver que Selenium, por lo que cumple el mismo enfoque de automatización e2e que piden los requerimientos, adaptado a Android.
+### Justificación: Appium en lugar de Selenium/Katalon
+
+Selenium automatiza navegadores web operando sobre el DOM de una página HTML; no tiene forma de interactuar con una app nativa de Android, que no expone DOM sino un árbol de vistas (Views/Compose). Katalon, por su parte, es una capa no-code construida sobre Selenium (para web) y Appium (para móvil) — internamente usa Appium para automatizar apps nativas, por lo que no aporta una alternativa distinta en este caso.
+
+Appium extiende el mismo protocolo **WebDriver** que usa Selenium (`findElement`, `click`, `sendKeys`, etc.), pero apuntando a elementos nativos de Android, incluyendo `testTag`s de Jetpack Compose. Esto significa que el enfoque de automatización e2e pedido por los requerimientos se cumple igual, adaptado al tipo de aplicación (nativa móvil en vez de web), y se integra igual de bien al pipeline de CI/CD mediante un emulador headless en GitHub Actions.
+
+Si en el futuro el proyecto agrega un panel web de administración, ahí sí aplicaría Selenium o Playwright de forma directa, ya que en ese contexto sí existe un DOM que probar.
 
 ## Entornos
 
